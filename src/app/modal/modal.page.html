@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Employee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div *ngIf="employee">
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input [(ngModel)]="employee.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Last Name</ion-label>
+    <ion-input [(ngModel)]="employee.lastName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Department</ion-label>
+    <ion-input [(ngModel)]="employee.department"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Salary</ion-label>
+    <ion-input [(ngModel)]="employee.salary"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input [(ngModel)]="employee.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Address</ion-label>
+    <ion-input [(ngModel)]="employee.address"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Phone number</ion-label>
+    <ion-input [(ngModel)]="employee.phoneNumber"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="updateEmployee()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Update
+  </ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteEmployee()">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Delete
+  </ion-button>
+</div>
+</ion-content>

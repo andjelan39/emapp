@@ -1,17 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title align="center" color="secondary"><b>Emapp</b></ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-title>Your employees</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="light">
+  <ion-list>
+    <ion-item *ngFor="let employee of employees" (click)="openEmployee(employee)">
+      <ion-label>
+        {{ employee.name + ' ' + employee.lastName }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addEmployee()" color="tertiary">
+      <ion-icon name="add">
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
