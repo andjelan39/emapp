@@ -28,14 +28,12 @@ export class DataService {
 
   constructor(private firestore: Firestore) { }
 
-  //ovde umjesto notes ide ime kolekcije koju kreiramo tamo u bazi
-  //ovo nam daje celu kolekciju kao niz
+
   getEmployees(): Observable<Employee[]>{
     const employeeRef = collection(this.firestore, 'employees');
     return collectionData(employeeRef, {idField: 'id'}) as Observable<Employee[]> ;
   }
 
-  //prikazuje samo jednog preko ID, ne treba ovo any
   getEmployeeById(id: string): Observable<Employee>{ 
     const employeeDocRef = doc(this.firestore, `employees/${id}`);
     return docData(employeeDocRef, {idField: 'id'}) as Observable<Employee>;
