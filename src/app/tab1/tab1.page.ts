@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { DataService } from '../services/data.service';
@@ -11,8 +12,10 @@ import { DataService } from '../services/data.service';
 export class Tab1Page {
 
   employees: any;
+  employee: any;
+  currentUser = this.auth.currentUser?.uid;
 
-  constructor(private dataService: DataService, private alertCtrl: AlertController, private modalCtrl: ModalController) {
+  constructor(private dataService: DataService, private alertCtrl: AlertController, private modalCtrl: ModalController, private auth: Auth) {
     this.dataService.getEmployees().subscribe(res => {
       console.log(res);
       this.employees = res;
@@ -76,7 +79,9 @@ export class Tab1Page {
       {
         text: 'Add',
         handler: (res) => {
-          this.dataService.addEmployee({name: res.name, lastName: res.lastName, department: res.department,
+          nadredjeni: this.auth.currentUser?.uid;
+          this.dataService.addEmployee({
+            name: res.name, lastName: res.lastName, department: res.department,
             salary: res.salary, address: res.address, email: res.email, phoneNumber: res.phoneNumber});
         }
       }

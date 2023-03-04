@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, addDoc, deleteDoc, updateDoc } from '@angular/fire/firestore';
+import { Auth } from '@angular/fire/auth';
+import { Firestore, collection, collectionData, doc, docData, addDoc, deleteDoc, updateDoc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 export interface Employee {
@@ -26,7 +27,7 @@ export interface User {
 })
 export class DataService {
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, private auth: Auth) { }
 
 
   getEmployees(): Observable<Employee[]>{
@@ -65,9 +66,15 @@ export class DataService {
     return docData(userDocRef, {idField: 'id'}) as Observable<User>;
   }
 
-  addUser(user: User) {
+  /*addUser(user: User) {
     const userRef = collection(this.firestore, 'users');
     return addDoc (userRef, user);
+  }*/
+
+  addUser(user: User) {
+
+    setDoc(doc(this.firestore, `users/${this.auth.currentUser?.uid}`), user);
+
   }
 
   updateUser(user: User) {

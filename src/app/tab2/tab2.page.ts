@@ -81,14 +81,4 @@ export class Tab2Page {
     });
     await alert.present();
   }
-
-  //ne treba
-  async updateUser(){
-    this.dataService.updateEmployee(this.user);
-    const toast = await this.toastCtrl.create({
-      message: 'Employee updated!',
-      duration: 1000
-    });
-    toast.present();
-  }
 }
