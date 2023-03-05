@@ -14,14 +14,6 @@ export interface Employee {
   phoneNumber: string;
 }
 
-export interface User {
-  id?: string;
-  name: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -55,33 +47,5 @@ export class DataService {
     return updateDoc(employeeDocRef, {name: employee.name, lastName: employee.lastName, department: employee.department,
     salary: employee.salary, address: employee.address, email: employee.email, phoneNumber: employee.phoneNumber} );
   }
-
-  getUsers(): Observable<User[]>{
-    const userRef = collection(this.firestore, 'users');
-    return collectionData(userRef, {idField: 'id'}) as Observable<User[]> ;
-  }
-
-  getUserById(id: string): Observable<User>{ 
-    const userDocRef = doc(this.firestore, `users/${id}`);
-    return docData(userDocRef, {idField: 'id'}) as Observable<User>;
-  }
-
-  /*addUser(user: User) {
-    const userRef = collection(this.firestore, 'users');
-    return addDoc (userRef, user);
-  }*/
-
-  addUser(user: User) {
-
-    setDoc(doc(this.firestore, `users/${this.auth.currentUser?.uid}`), user);
-
-  }
-
-  updateUser(user: User) {
-    const userDocRef = doc(this.firestore, `users/${user.id}`);
-    return updateDoc(userDocRef, {name: user.name, lastName: user.lastName,
-    email: user.email, phoneNumber: user.phoneNumber});
-  }
-
   
 }

@@ -27,6 +27,14 @@ const routes: Routes = [
   {
     path: 'modal',
     loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'policy',
+    loadChildren: () => import('./policy/policy.module').then( m => m.PolicyPageModule)
   }
 ];
 @NgModule({

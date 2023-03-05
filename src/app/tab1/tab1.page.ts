@@ -13,7 +13,6 @@ export class Tab1Page {
 
   employees: any;
   employee: any;
-  currentUser = this.auth.currentUser?.uid;
 
   constructor(private dataService: DataService, private alertCtrl: AlertController, private modalCtrl: ModalController, private auth: Auth) {
     this.dataService.getEmployees().subscribe(res => {
@@ -79,7 +78,6 @@ export class Tab1Page {
       {
         text: 'Add',
         handler: (res) => {
-          nadredjeni: this.auth.currentUser?.uid;
           this.dataService.addEmployee({
             name: res.name, lastName: res.lastName, department: res.department,
             salary: res.salary, address: res.address, email: res.email, phoneNumber: res.phoneNumber});

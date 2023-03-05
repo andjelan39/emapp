@@ -24,15 +24,6 @@ export class Tab2Page {
     private alertCtrl: AlertController,
     private navCrtl: NavController
   ){
-    this.dataService.getUsers().subscribe(res => {
-      console.log(res);
-      this.users = res;
-    });
-
-    //ne treba
-    this.dataService.getUserById(this.id).subscribe(res => {
-      this.user = res;
-    });
   }
 
   async logout(){
@@ -40,45 +31,12 @@ export class Tab2Page {
     this.router.navigateByUrl('/login', {replaceUrl: true});
   }
 
-
-  async addUser(){
-   
-    const alert = await this.alertCtrl.create({
-      header: 'Add User Info',
-      inputs: [{
-        name: 'name',
-        placeholder: 'Enter name',
-        type: 'text'
-      },
-      {
-        name: 'lastName',
-        placeholder: 'Enter last name',
-        type: 'text'
-      },
-      {
-        name: 'email',
-        placeholder: 'Enter email',
-        type: 'email'
-      },
-      {
-        name: 'phoneNumber',
-        placeholder: 'Enter phone number',
-        type: 'text'
-      },
-    ],
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel'
-      },
-      {
-        text: 'Add',
-        handler: (res) => {
-          this.dataService.addUser({name: res.name, lastName: res.lastName, email: res.email, phoneNumber: res.phoneNumber});
-        }
-      }
-    ]
-    });
-    await alert.present();
+  toggleTheme(event: any){
+    if(event.detail.checked){
+      document.body.setAttribute('color-theme', 'dark');
+    }else{
+      document.body.setAttribute('color-theme', 'light')
+    }
   }
+
 }

@@ -3,56 +3,46 @@
     <ion-title align="center" color="secondary"><b>Emapp</b></ion-title>
   </ion-toolbar>
   <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-button (click)="logout()">
-          <ion-icon slot="icon-only" name="log-out" item-right></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>My profile</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="flex-center">
-    <ion-card color="light">
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <div>
-        <p align="center" color="secondary"><b>Profile info:</b></p>
-        <ion-item *ngFor="let user of users">
-          <ion-label>
-            <b>Name: </b> {{ user.name }}
-          </ion-label>
-        </ion-item>
 
-        <ion-item *ngFor="let user of users">
-          <ion-label>
-            <b>Last Name: </b> {{ user.lastName }}
-          </ion-label>
-        </ion-item>
-
-        <ion-item *ngFor="let user of users">
-          <ion-label>
-           <b>Email: </b> {{ user.email }}
-          </ion-label>
-        </ion-item>
-
-        <ion-item *ngFor="let user of users">
-          <ion-label>
-            <b>Phone number: </b> {{ user.phoneNumber }}
-          </ion-label>
-        </ion-item>
-        <br>
-        <ion-button shape="round" color="tertiary" fill="solid" size="small" (click)="addUser()">Add User Info</ion-button>
-        <br> <br>
-      </div>
-    </ion-card>
-
-    <!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="addUser()" color="tertiary">
-        <ion-icon name="add">
-        </ion-icon>
-      </ion-fab-button>
-    </ion-fab>-->
-  </div>
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Dark Mode</ion-label>
+    <ion-toggle (ionChange)='toggleTheme($event)' slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item button routerLink="/about">
+    <ion-buttons>
+      <ion-button>
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-button>
+      <ion-label>About Us</ion-label>
+    </ion-buttons>
+  </ion-item>
+  <ion-item button routerLink="/policy">
+    <ion-buttons>
+      <ion-button>
+        <ion-icon name="shield-half-outline"></ion-icon>
+      </ion-button>
+      <ion-label>Privacy Policy</ion-label>
+    </ion-buttons>
+  </ion-item>
+  <ion-item button>
+    <ion-buttons>
+      <ion-button>
+        <ion-icon name="cog-outline"></ion-icon>
+      </ion-button>
+      <ion-label>General Settings</ion-label>
+    </ion-buttons>
+  </ion-item>
+  <ion-item>
+    <ion-buttons>
+      <ion-button (click)="logout()">
+        <ion-icon name="power"></ion-icon>
+      </ion-button>
+      <ion-label>Logout</ion-label>
+    </ion-buttons>
+  </ion-item>
+  
 </ion-content>

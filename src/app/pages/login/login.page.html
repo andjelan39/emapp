@@ -7,13 +7,11 @@
         
           <ion-card-content>
             <form [formGroup]="credentials" (ngSubmit)="login()">
-
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
                 <ion-input type="email" formControlName="email"></ion-input>
                 <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
               </ion-item>
-
               <ion-item>
                 <ion-label position="floating">Password</ion-label>
                 <ion-input type="password" formControlName="password"></ion-input>
